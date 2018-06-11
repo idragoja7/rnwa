@@ -281,7 +281,7 @@ if(!isset($_COOKIE['uname']))
 
                      // $queryy = "SELECT `lokacija` FROM `slike` WHERE `auto_idauta``=".$rez[1]->{'idauta'}."";
 					  //$queryy = "SELECT * FROM `korisnik` WHERE `idkorisnik`=".$rez[1]->{'idkorisnik'}."";
-					$queryy ="SELECT *  FROM AUTOMOBILI where NAZIV= \"" .$risponz[0]->{'Naziv_automobila'}."\"";
+					$queryy ="SELECT *  FROM automobili where naziv	= \"" .$risponz[0]->{'Naziv_automobila'}."\"";
                     $resulte = $con->query($queryy);
                     while($rezu=$resulte->fetch_array())
                     {
@@ -313,7 +313,10 @@ if(!isset($_COOKIE['uname']))
                 else {
 if(isset($_COOKIE['uname']))
     {
-                    
+                    echo "<p>Ukoliko želite registrirati novog korisnika kliknite <a href=indexcrud.php>ovdje</a></p>";
+					
+					echo "<p></p>";
+					echo "<p></p>";
                     echo "<p>Forma poziva web servis koji pretražuje automobile s nazivom koji ste unijeli</p> ";
                     echo "<form method=\"get\" action=\"".htmlspecialchars($_SERVER["PHP_SELF"])."\">";
                     echo "Naziv auta: <input type=\"text\" name=\"naziv\">";
@@ -344,7 +347,7 @@ if(isset($_COOKIE['uname']))
                         <div class="thumbnail">
                             <img src="'.$slika.'" alt="">
                             <div class="caption">
-                                <h4 class="pull-right">'.$rr[0]->{'Cijena'}.'KN</h4>
+                                <h4 class="pull-right">'.$rr[0]->{'Cijena'}.'KM</h4>
                                 <h4><a href="#">'.$rr[0]->{'Naziv automobila'}.'</a>
                                 </h4>
                                 <p>'.$rr[0]->{'Opis'}.'</p>

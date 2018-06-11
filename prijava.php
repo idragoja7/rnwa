@@ -14,7 +14,7 @@ function CheckLogin($username,$password){
 include("Connect.php");
 $korisnik=$_POST['username'];
 $lozinka=$_POST['password'];
-$sql="SELECT * FROM korisnik WHERE email='$korisnik' AND lozinka='$lozinka'";
+$sql="SELECT * FROM korisnici WHERE email='$korisnik' AND lozinka='$lozinka'";
 $result=$con->query($sql);
 $num_rows=0;
 while($row=$result->fetch_array())
@@ -34,7 +34,7 @@ function ReturnUserData($username,$password){
 	include("Connect.php");
 	$korisnik=$_POST['username'];
 	$lozinka=$_POST['password'];
-	$sql="SELECT email, razina FROM korisnik WHERE email='$korisnik' AND lozinka='$lozinka'";
+	$sql="SELECT email, razina FROM korisnici WHERE email='$korisnik' AND lozinka='$lozinka'";
 	$result=$con->query($sql);
 	$rez=array();
 	while($ispisrez=$result->fetch_array())
