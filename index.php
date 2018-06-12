@@ -259,7 +259,7 @@ if(!isset($_COOKIE['uname']))
                       
                       $response = $sClient->doHello($params);
                         
-                      echo "<br><br><br>ODGOVOR:<br>";
+                      echo "<br><br><br><br>";
                       
                         
                       $risponz = $sClient->__getLastResponse();
@@ -267,7 +267,7 @@ if(!isset($_COOKIE['uname']))
                       $json_2 = str_replace( array('[',']') , ''  , $risponz );
                         
                       //echo '<pre>';
-                     // var_dump($risponz);
+                     //var_dump($risponz);
 					 
                      
                       //echo $rez;
@@ -281,24 +281,13 @@ if(!isset($_COOKIE['uname']))
 
                      // $queryy = "SELECT `lokacija` FROM `slike` WHERE `auto_idauta``=".$rez[1]->{'idauta'}."";
 					  //$queryy = "SELECT * FROM `korisnik` WHERE `idkorisnik`=".$rez[1]->{'idkorisnik'}."";
-					$queryy ="SELECT *  FROM automobili where naziv	= \"" .$risponz[0]->{'Naziv_automobila'}."\"";
+					//$queryy ="SELECT *  FROM automobili where 'naziv'	= \"" .$risponz[0]->{'nazivv'}."\"";
                     $resulte = $con->query($queryy);
                     while($rezu=$resulte->fetch_array())
                     {
-                    //$slika=$rezu['lokacija'];
+                    $slika=$rezu['lokacija'];
                     }
-                    echo ' <div class="col-sm-4 col-lg-4 col-md-4">
-                        <div class="thumbnail">
-                            <img src="'.$slika.'" alt="">
-                            <div class="caption">
-                                <h4 class="pull-right">'.$risponz[0]->{'Cijena'}.'eura</h4>
-                                <h4><a href="#">'.$risponz[0]->{'Naziv auta'}.'</a>
-                                </h4>
-                                <p>'.$risponz[0]->{'Opis'}.'</p>
-                            </div>
-                           
-                        </div>
-                    </div>';
+                    
 
 
 
@@ -329,41 +318,14 @@ if(isset($_COOKIE['uname']))
                 <?php # HelloClient.php
 # Copyright (c) 2005 by Dr. Herong Yang
 #  
-    if (isset($_REQUEST["trazilicax"])){$naziv=$_REQUEST['trazilicax'];
-   $client = new SoapClient(null, array(
-      'location' => "http://localhost/Prodaja_auta/HelloServer.php",
-      'uri'      => "urn://neretva.fsr.ba/hello",
-      'trace'    => 1 ));
-   $r=$client->hello("$naziv");
-   $rr=json_decode($r);
-   $return = $client->__soapCall("hello",array("$naziv"));
-     $queryy = "SELECT `lokacija` FROM `slike` WHERE `auto_idauta``=".$rr[0]->{'Id auto'}."";
-                    $resulte = $con->query($queryy);
-                    while($rezu=$resulte->fetch_array())
-                    {
-                    $slika=$rezu['lokacija'];
-                    }
-                    echo ' <div class="col-sm-4 col-lg-4 col-md-4">
-                        <div class="thumbnail">
-                            <img src="'.$slika.'" alt="">
-                            <div class="caption">
-                                <h4 class="pull-right">'.$rr[0]->{'Cijena'}.'KM</h4>
-                                <h4><a href="#">'.$rr[0]->{'Naziv automobila'}.'</a>
-                                </h4>
-                                <p>'.$rr[0]->{'Opis'}.'</p>
-                            </div>
-                           
-                        </div>
-                    </div>';}
-else{
-    if(isset($_COOKIE['uname']))
-    {
-echo "<form method=\"get\" action=\"".htmlspecialchars($_SERVER["PHP_SELF"])."\">";
-                    echo "Naziv auta: <input type=\"text\" name=\"trazilicax\"  placeholder=\"Tražilica bez wsdl:\">";
-                    echo " <input type=\"submit\" name=\"submit\" value=\"Pretraga\"> ";
-                    echo "</form>";
-                }
-    }
+   // if (isset($_REQUEST["trazilicax"])){$naziv=$_REQUEST['trazilicax'];
+  // $client = new SoapClient(null, array(
+    //  'location' => "http://localhost/Prodaja_auta/HelloServer.php",
+ //     'uri'      => "urn://neretva.fsr.ba/hello",
+    //  'trace'    => 1 ));
+  // $r=$client->hello("$naziv");
+  
+
 ?>
                
                 </div>  <!--prvi div za prikaz auta-->
